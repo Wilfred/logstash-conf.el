@@ -1,4 +1,4 @@
-;;; logstash-conf.el -- basic mode for editing logstash configuration
+;;; logstash-conf.el --- basic mode for editing logstash configuration
 
 ;; Copyright (C) 2014 Wilfred Hughes <me@wilfred.me.uk>
 ;;
