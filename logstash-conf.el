@@ -4,7 +4,7 @@
 ;;
 ;; Author: Wilfred Hughes <me@wilfred.me.uk>
 ;; Created: 21 October 2014
-;; Version: 0.1
+;; Version: 0.2
 
 ;;; Commentary:
 ;; `conf-mode' offers adequate highlighting for Logstash configuration
@@ -36,15 +36,50 @@
 
 (defvar logstash-indent 8)
 
-(defun logstash--open-parens ()
+(defun logstash--get-faces (pos)
+  "Get all the font faces at POS."
+  (remq nil
+        (list
+         (get-char-property pos 'read-face-name)
+         (get-char-property pos 'face)
+         (plist-get (text-properties-at pos) 'face))))
+
+(defvar logstash--open-parens
+  '(?\{ ?\[))
+(defvar logstash--close-parens
+  '(?\} ?\]))
+
+;; TODO: release these as a reusable package.
+(defun logstash--comment-p (pos)
+  "Return non-nil if POS is inside a comment."
+  (nth 4 (syntax-ppss pos)))
+
+(defun logstash--string-p (pos)
+  "Return non-nil if POS is inside a string."
+  (memq 'font-lock-string-face (logstash--get-faces pos)))
+
+(defun logstash--open-paren-p ()
+  "Return t if point is currently on an open paren."
+  (and (looking-at (rx-to-string `(or ,@logstash--open-parens)))
+       (not (logstash--comment-p (point)))
+       (not (logstash--string-p (point)))))
+
+(defun logstash--close-paren-p ()
+  "Return t if point is currently on a close paren."
+  (and (looking-at (rx-to-string `(or ,@logstash--close-parens)))
+       (not (logstash--comment-p (point)))
+       (not (logstash--string-p (point)))))
+
+(defun logstash--open-paren-count ()
   "Return the number of open brackets before point."
   (let ((open-paren-count 0)
-        (open-parens '(?\{ ?\[)))
+        (paren-pattern
+         (rx-to-string `(or ,@logstash--open-parens ,@logstash--close-parens))))
     (save-excursion
-      (while (search-backward-regexp (rx (or "{" "}" "[" "]")) nil t)
-        (if (memq (char-after) open-parens)
-            (incf open-paren-count)
-          (decf open-paren-count))))
+      (while (search-backward-regexp paren-pattern nil t)
+        (cond
+         ((logstash--open-paren-p) (incf open-paren-count))
+         ((logstash--close-paren-p) (decf open-paren-count)))))
     open-paren-count))
 
 (defun logstash-indent-line ()
@@ -65,7 +100,7 @@
       (while (looking-at "}")
         (forward-char 1))
 
-      (setq correct-indentation-level (logstash--open-parens)))
+      (setq correct-indentation-level (logstash--open-paren-count)))
 
     ;; Replace with the correct indentation.
     (dotimes (_ (* logstash-indent correct-indentation-level))
