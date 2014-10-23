@@ -34,7 +34,14 @@
 ;;; Code:
 (require 'conf-mode)
 
-(defvar logstash-indent 8)
+(defgroup logstash nil
+  "Major mode for editing Logstash configuration files."
+  :group 'languages)
+
+(defcustom logstash-indent 8
+  "Indentation offset for `logstash-conf-mode'"
+  :group 'logstash
+  :type 'integer)
 
 (defun logstash--get-faces (pos)
   "Get all the font faces at POS."
