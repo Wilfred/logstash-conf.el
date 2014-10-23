@@ -110,6 +110,7 @@
     (let ((point-offset (- initial-column initial-indentation)))
       (forward-char point-offset))))
 
+;;;###autoload
 (defun logstash-conf-mode ()
   (interactive)
   ;; It's a pain to use `define-derived-mode' with conf-mode, so just
