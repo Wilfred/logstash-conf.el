@@ -34,7 +34,14 @@
 ;;; Code:
 (require 'conf-mode)
 
-(defvar logstash-indent 8)
+(defgroup logstash nil
+  "Major mode for editing Logstash configuration files."
+  :group 'languages)
+
+(defcustom logstash-indent 8
+  "Indentation offset for `logstash-conf-mode'"
+  :group 'logstash
+  :type 'integer)
 
 (defun logstash--get-faces (pos)
   "Get all the font faces at POS."
@@ -110,6 +117,7 @@
     (let ((point-offset (- initial-column initial-indentation)))
       (forward-char point-offset))))
 
+;;;###autoload
 (defun logstash-conf-mode ()
   (interactive)
   ;; It's a pain to use `define-derived-mode' with conf-mode, so just
