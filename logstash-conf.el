@@ -33,6 +33,7 @@
 
 ;;; Code:
 (require 'conf-mode)
+(require 'cl)
 
 (defgroup logstash nil
   "Major mode for editing Logstash configuration files."
@@ -85,8 +86,8 @@
     (save-excursion
       (while (search-backward-regexp paren-pattern nil t)
         (cond
-         ((logstash--open-paren-p) (incf open-paren-count))
-         ((logstash--close-paren-p) (decf open-paren-count)))))
+         ((logstash--open-paren-p) (cl-incf open-paren-count))
+         ((logstash--close-paren-p) (cl-decf open-paren-count)))))
     open-paren-count))
 
 (defun logstash-indent-line ()
