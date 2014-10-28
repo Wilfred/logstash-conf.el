@@ -33,7 +33,7 @@
 
 ;;; Code:
 (require 'conf-mode)
-(require 'cl)
+(require 'cl-lib)
 
 (defgroup logstash nil
   "Major mode for editing Logstash configuration files."
