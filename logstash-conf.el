@@ -4,7 +4,7 @@
 ;;
 ;; Author: Wilfred Hughes <me@wilfred.me.uk>
 ;; Created: 21 October 2014
-;; Version: 0.2
+;; Version: 0.3
 
 ;;; Commentary:
 ;; `conf-mode' offers adequate highlighting for Logstash configuration
@@ -40,7 +40,7 @@
   "Major mode for editing Logstash configuration files."
   :group 'languages)
 
-(defcustom logstash-indent 8
+(defcustom logstash-indent 4
   "Indentation offset for `logstash-conf-mode'"
   :group 'logstash
   :type 'integer)

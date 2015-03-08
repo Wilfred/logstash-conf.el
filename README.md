@@ -12,3 +12,13 @@ Features:
 * Indentation.
 
 Just install it from MELPA, then run `M-x logstash-conf-mode` on the file.
+
+## Changelog
+
+### v0.3
+
+Change default indentation to 4 spaces.
+
+### v0.2
+
+Initial release.
