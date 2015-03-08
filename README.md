@@ -19,6 +19,8 @@ Just install it from MELPA, then run `M-x logstash-conf-mode` on the file.
 
 Change default indentation to 4 spaces.
 
+Fixed an issue with highlighting occurring in comments.
+
 ### v0.2
 
 Initial release.

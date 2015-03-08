@@ -124,7 +124,8 @@
   (interactive)
   ;; It's a pain to use `define-derived-mode' with conf-mode, so just
   ;; call it directly instead.
-  (conf-unix-mode)
+  (let ((conf-font-lock-keywords nil))
+    (conf-unix-mode))
   (setq indent-line-function 'logstash-indent-line)
   (setq mode-name "Logstash"))
 
