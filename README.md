@@ -1,6 +1,6 @@
 # logstash-conf-mode
 
-    [![MELPA](http://melpa.org/packages/logstash-conf-badge.svg)](http://melpa.org/#/logstash-conf)
+[![MELPA](http://melpa.org/packages/logstash-conf-badge.svg)](http://melpa.org/#/logstash-conf)
 
 ![logstash-conf-mode](screenshot.png)
 
