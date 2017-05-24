@@ -41,7 +41,7 @@
   :group 'languages)
 
 (defcustom logstash-indent 4
-  "Indentation offset for `logstash-conf-mode'"
+  "Indentation offset for `logstash-conf-mode'."
   :group 'logstash
   :type 'integer)
 
@@ -92,6 +92,7 @@
     open-paren-count))
 
 (defun logstash-indent-line ()
+  "Indent the current line."
   (interactive)
   (let ((initial-column (current-column))
         initial-indentation
@@ -121,6 +122,7 @@
 
 ;;;###autoload
 (defun logstash-conf-mode ()
+  "A major mode for editing Logstash pipeline files."
   (interactive)
   ;; It's a pain to use `define-derived-mode' with conf-mode, so just
   ;; call it directly instead.
