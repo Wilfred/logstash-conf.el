@@ -130,5 +130,11 @@
   (setq indent-line-function 'logstash-indent-line)
   (setq mode-name "Logstash"))
 
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.logstash\\'" . logstash-conf-mode))
+
+;;;###autoload
+(add-to-list 'interpreter-mode-alist '("logstash" . logstash-conf-mode))
+
 (provide 'logstash-conf)
 ;;; logstash-conf.el ends here
