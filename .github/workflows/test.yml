@@ -27,3 +27,5 @@ jobs:
       with:
         version: ${{ matrix.emacs_version }}
     - uses: conao3/setup-cask@master
+
+    - run: echo hello
