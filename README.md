@@ -15,9 +15,9 @@ Just install it from MELPA, then run `M-x logstash-conf-mode` on the file.
 
 ## Changelog
 
-### v0.4 (unreleased)
+### v0.4 (not yet tagged)
 
-No changes yet.
+Ensure point stays on the same line when indenting.
 
 ### v0.3
 

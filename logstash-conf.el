@@ -117,7 +117,8 @@
 
     ;; Restore point at the same offset on this line.
     (let ((point-offset (- initial-column initial-indentation)))
-      (forward-char point-offset))))
+      (when (> point-offset 0)
+        (forward-char point-offset)))))
 
 ;;;###autoload
 (defun logstash-conf-mode ()
