@@ -4,7 +4,7 @@
 ;;
 ;; Author: Wilfred Hughes <me@wilfred.me.uk>
 ;; Created: 21 October 2014
-;; Version: 0.3
+;; Version: 0.4
 
 ;;; Commentary:
 ;; `conf-mode' offers adequate highlighting for Logstash configuration

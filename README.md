@@ -15,6 +15,10 @@ Just install it from MELPA, then run `M-x logstash-conf-mode` on the file.
 
 ## Changelog
 
+### v0.4 (unreleased)
+
+No changes yet.
+
 ### v0.3
 
 Change default indentation to 4 spaces.
