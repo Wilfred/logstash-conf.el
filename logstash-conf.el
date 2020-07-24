@@ -45,50 +45,9 @@
   :group 'logstash
   :type 'integer)
 
-(defun logstash--get-faces (pos)
-  "Get all the font faces at POS."
-  (remq nil
-        (list
-         (get-char-property pos 'read-face-name)
-         (get-char-property pos 'face)
-         (plist-get (text-properties-at pos) 'face))))
-
-(defvar logstash--open-parens
-  '(?\{ ?\[))
-(defvar logstash--close-parens
-  '(?\} ?\]))
-
-(defun logstash--comment-p (pos)
-  "Return non-nil if POS is inside a comment."
-  (nth 4 (syntax-ppss pos)))
-
-(defun logstash--string-p (pos)
-  "Return non-nil if POS is inside a string."
-  (memq 'font-lock-string-face (logstash--get-faces pos)))
-
-(defun logstash--open-paren-p ()
-  "Return t if point is currently on an open paren."
-  (and (looking-at (rx-to-string `(or ,@logstash--open-parens)))
-       (not (logstash--comment-p (point)))
-       (not (logstash--string-p (point)))))
-
-(defun logstash--close-paren-p ()
-  "Return t if point is currently on a close paren."
-  (and (looking-at (rx-to-string `(or ,@logstash--close-parens)))
-       (not (logstash--comment-p (point)))
-       (not (logstash--string-p (point)))))
-
 (defun logstash--open-paren-count ()
   "Return the number of open brackets before point."
-  (let ((open-paren-count 0)
-        (paren-pattern
-         (rx-to-string `(or ,@logstash--open-parens ,@logstash--close-parens))))
-    (save-excursion
-      (while (search-backward-regexp paren-pattern nil t)
-        (cond
-         ((logstash--open-paren-p) (cl-incf open-paren-count))
-         ((logstash--close-paren-p) (cl-decf open-paren-count)))))
-    open-paren-count))
+  (nth 0 (syntax-ppss)))
 
 (defun logstash-indent-line ()
   "Indent the current line."

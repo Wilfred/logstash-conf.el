@@ -17,6 +17,8 @@ Just install it from MELPA, then run `M-x logstash-conf-mode` on the file.
 
 ### v0.4 (not yet tagged)
 
+Fixed an issue with slow indentation on large files.
+
 Ensure point stays on the same line when indenting.
 
 ### v0.3
