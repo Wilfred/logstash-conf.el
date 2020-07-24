@@ -32,10 +32,6 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Code:
-(require 'conf-mode)
-(eval-when-compile
-  (require 'cl-lib)) ;; cl-incf, cl-decf
-
 (defgroup logstash nil
   "Major mode for editing Logstash configuration files."
   :group 'languages)
