@@ -24,4 +24,5 @@ jobs:
         version: ${{ matrix.emacs_version }}
     - uses: conao3/setup-cask@master
 
-    - run: emacs --version
+    - run: cask
+    - run: cask exec ert-runner
