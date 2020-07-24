@@ -58,7 +58,6 @@
 (defvar logstash--close-parens
   '(?\} ?\]))
 
-;; TODO: release these as a reusable package.
 (defun logstash--comment-p (pos)
   "Return non-nil if POS is inside a comment."
   (nth 4 (syntax-ppss pos)))
