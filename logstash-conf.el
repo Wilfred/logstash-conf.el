@@ -79,6 +79,13 @@
       (when (> point-offset 0)
         (forward-char point-offset)))))
 
+(defvar logstash-conf-mode-font-lock-keywords
+  `((,(regexp-opt
+       '("input" "filter" "output"
+         "if" "in" )
+       'symbols)
+     . font-lock-keyword-face)))
+
 (defvar logstash-conf-mode-syntax-table
   (let ((table (make-syntax-table)))
     ;; Treat # as a single-line comment.
@@ -97,6 +104,7 @@
   "Major mode for editing logstash configuration files.
 
 \\{logstash-conf-mode-map\\}"
+  (setq font-lock-defaults '(logstash-conf-mode-font-lock-keywords))
   (setq-local indent-line-function #'logstash-indent-line)
   (setq-local comment-start "# "))
 
