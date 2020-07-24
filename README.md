@@ -17,6 +17,9 @@ Just install it from MELPA, then run `M-x logstash-conf-mode` on the file.
 
 ### v0.4 (not yet tagged)
 
+Redefined `logstash-conf-mode` as a standalone mode with better syntax
+highlighting and comment handling.
+
 Fixed an issue with slow indentation on large files.
 
 Ensure point stays on the same line when indenting.

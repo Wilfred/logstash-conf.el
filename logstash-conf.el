@@ -7,9 +7,9 @@
 ;; Version: 0.4
 
 ;;; Commentary:
-;; `conf-mode' offers adequate highlighting for Logstash configuration
-;; files, but does not indent them correctly. This file defines a
-;; simple `logstash-conf-mode' that both highlights and indents.
+
+;; Basic syntax highlighting and indentation for Logtash configuration
+;; files. Does a better job than `conf-unix-mode', at least.
 
 ;;; License:
 
@@ -79,15 +79,26 @@
       (when (> point-offset 0)
         (forward-char point-offset)))))
 
+(defvar logstash-conf-mode-syntax-table
+  (let ((table (make-syntax-table)))
+    ;; Treat # as a single-line comment.
+    (modify-syntax-entry ?# "<" table)
+    (modify-syntax-entry ?\n ">" table)
+
+    ;; Single and double-quoted strings.
+    (modify-syntax-entry ?\" "\"" table)
+    (modify-syntax-entry ?\\ "\\" table)
+    (modify-syntax-entry ?' "\"" table)
+
+    table))
+
 ;;;###autoload
-(defun logstash-conf-mode ()
-  "A major mode for editing Logstash pipeline files."
-  (interactive)
-  ;; It's a pain to use `define-derived-mode' with conf-mode, so just
-  ;; call it directly instead.
-  (conf-unix-mode)
-  (setq indent-line-function 'logstash-indent-line)
-  (setq mode-name "Logstash"))
+(define-derived-mode logstash-conf-mode prog-mode "Logstash"
+  "Major mode for editing logstash configuration files.
+
+\\{logstash-conf-mode-map\\}"
+  (setq-local indent-line-function #'logstash-indent-line)
+  (setq-local comment-start "# "))
 
 ;;;###autoload
 (add-to-list 'auto-mode-alist '("\\.logstash\\'" . logstash-conf-mode))
