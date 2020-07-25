@@ -8,8 +8,8 @@ A basic Emacs mode for editing Logstash configuration files.
 
 Features:
 
-* Syntax highlighting based on `conf-mode`.
-* Indentation.
+* Syntax highlighting
+* Indentation
 
 Just install it from MELPA, then run `M-x logstash-conf-mode` on the file.
 
