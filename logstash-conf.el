@@ -4,7 +4,7 @@
 ;;
 ;; Author: Wilfred Hughes <me@wilfred.me.uk>
 ;; Created: 21 October 2014
-;; Version: 0.4
+;; Version: 0.5
 
 ;;; Commentary:
 

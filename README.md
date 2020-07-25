@@ -15,7 +15,11 @@ Just install it from MELPA, then run `M-x logstash-conf-mode` on the file.
 
 ## Changelog
 
-### v0.4 (not yet tagged)
+### v0.5 (not yet tagged)
+
+No changes yet.
+
+### v0.4
 
 Redefined `logstash-conf-mode` as a standalone mode with better syntax
 highlighting and comment handling.
