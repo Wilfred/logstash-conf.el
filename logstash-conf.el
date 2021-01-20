@@ -76,11 +76,15 @@
         (forward-char point-offset)))))
 
 (defvar logstash-conf-mode-font-lock-keywords
-  `((,(regexp-opt
-       '("input" "filter" "output"
-         "if" "in" )
-       'symbols)
-     . font-lock-keyword-face)))
+  `((,(regexp-opt '("if" "else" "in" "not" "and" "or" "nand" "xor") 'symbols)
+     . font-lock-keyword-face)
+    (,(regexp-opt '("input" "filter" "output") 'symbols)
+     . font-lock-builtin-face)
+    (,(regexp-opt '("true" "false") 'symbols)
+     . font-lock-constant-face)
+    ("\\<\\([a-z_]+\\)\\>\s*=>" 1 font-lock-type-face)
+    ("\\<\\([a-z_]+\\)\\>\s*{" 1 font-lock-function-name-face)
+    ("\\[[a-z0-9@_.-]+\\]" . font-lock-variable-name-face)))
 
 (defvar logstash-conf-mode-syntax-table
   (let ((table (make-syntax-table)))
