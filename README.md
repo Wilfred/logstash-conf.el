@@ -17,7 +17,7 @@ Just install it from MELPA, then run `M-x logstash-conf-mode` on the file.
 
 ### v0.5 (not yet tagged)
 
-No changes yet.
+Improvements to syntax highlighting of keywords and built-in operators.
 
 ### v0.4
 
