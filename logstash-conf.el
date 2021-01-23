@@ -82,7 +82,6 @@
      . font-lock-builtin-face)
     (,(regexp-opt '("true" "false") 'symbols)
      . font-lock-constant-face)
-    ("\\<\\([a-z_]+\\)\\>\s*=>" 1 font-lock-type-face)
     ("\\<\\([a-z_]+\\)\\>\s*{" 1 font-lock-function-name-face)
     ("\\[[a-z0-9@_.-]+\\]" . font-lock-variable-name-face)))
 
